@@ -1,0 +1,40 @@
+.lined {
+	overflow: hidden;
+	text-align: center;
+	margin: 30px 0;
+
+	&:before, &:after {
+		background-color: #ccc;
+		content: "";
+		display: inline-block;
+		height: 1px;
+		position: relative;
+		vertical-align: middle;
+		width: 50%;
+	}
+	&:before {
+		right: .5em;
+		margin-left: -50%;
+	}
+	&:after {
+		left: .5em;
+		margin-right: -50%;
+	}
+}
+
+.checklist {
+	@extend .list-unstyled;
+
+	li {
+		padding-left: 21px;
+		text-transform: uppercase;
+
+		&:before {
+			font-family: 'Font Awesome 5 Free';
+			font-weight:900;
+			content: '\f00c';
+			margin: 0 5px 0 -21px;
+			color: $primary;
+		}
+	}
+}

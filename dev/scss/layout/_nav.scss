@@ -1,0 +1,54 @@
+.navbar {
+	background: $secondary;
+	padding: 0;
+
+	.navbar-collapse {
+		padding: 0;
+	}
+
+	.navbar-nav {
+		width: 100%;
+		justify-content: space-between;
+
+		> li {
+
+			> a {
+				text-transform: uppercase;
+				font-weight: 400;
+				color: #fff;
+			}
+		}
+	}
+}
+
+.dropdown-menu {
+	padding: 0;
+	background: $secondary;
+
+	> li {
+
+		> a {
+			text-transform: uppercase;
+			padding-top: 6px;
+			padding-bottom: 6px;
+			color: #fff;
+
+			&:hover {
+				background: lighten($secondary,15%);
+				color: #fff;
+			}
+		}
+	}
+}
+
+.show-on-hover {
+	// Adjust to match nav breakpoint
+	@include media-breakpoint-down(md) {
+		&:not(.open)>.dropdown-menu, &:not(.open):hover>.dropdown-menu {
+			display: none;
+		}
+	}
+	&:hover>.dropdown-menu {
+		display: block;
+	}
+}
