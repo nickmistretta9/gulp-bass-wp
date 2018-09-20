@@ -50,7 +50,7 @@ gulp.task('plugin-styles', function() {
 });
 
 gulp.task('fontawesome', function() {
-	return gulp.src('node_modules/@fortawesome/fontawesome-free-webfonts/webfonts/**.*')
+	return gulp.src('node_modules/@fortawesome/fontawesome-free/webfonts/**.*')
 	.pipe(flatten())
 	.pipe(gulp.dest('dev/fonts'))
 });
@@ -105,7 +105,14 @@ gulp.task('moveJs', function() {
 gulp.task('css', function() {
 	var plugins = [
 		autoprefixer({browsers:['last 2 versions']}),
-		cssnano()
+		cssnano({
+		   reduceIdents: {
+		       keyframes: false
+		   },
+		   discardUnused: {
+		       keyframes: false
+		   }
+		})
 	];
 	return gulp.src('dev/css/*.css')
 	.pipe(postcss(plugins))
@@ -152,7 +159,7 @@ gulp.task('moveFiles', function() {
 
 gulp.task('replaceScriptLinks', function() {
 	return gulp.src('dist/footer.php')
-	.pipe(replace("<?php bloginfo('template_directory'); ?>/dev", "assets"))
+	.pipe(replace("<?php bloginfo('template_directory'); ?>/dev/js", "assets/js"))
 	.pipe(gulp.dest('dist'))
 });
 
@@ -215,5 +222,5 @@ gulp.task('build', function () {
 });
 
 gulp.task('final', function() {
-	runSequence('clean:dist', ['moveFiles'], ['replaceScriptLinks'], ['useref'], ['babel'], ['removeStyles', 'removeScripts', 'replaceDevWithAssets', 'clean:vendor'])
+	runSequence('clean:dist', 'moveFiles', 'replaceScriptLinks', 'useref', 'babel', ['removeStyles', 'removeScripts', 'replaceDevWithAssets', 'clean:vendor'])
 });

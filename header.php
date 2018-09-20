@@ -12,7 +12,7 @@
     <!-- jQuery Library -->  
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- Fontawesome CDN Link -->
-    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
     <!-- WordPress Header Items -->
 	<?php wp_head(); ?>
 	<link type="text/css" rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/dev/css/main.css">
